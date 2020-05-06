@@ -10,4 +10,9 @@ class Post extends Model
         'title',
         'text',
     ];
+
+    public function postHistory()
+    {
+        return $this->hasMany(PostHistory::class);
+    }
 }

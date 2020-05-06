@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PostsResource;
 use App\Models\Post;
+use App\Models\PostHistory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -30,8 +31,13 @@ class PostController extends Controller
         return new PostsResource($post);
     }
 
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Post $post): JsonResource
     {
+        PostHistory::create([
+            'text' => $request->text,
+            'post_id' => $post->id
+        ]);
+
         $post->update([
             'title' => $request->title,
             'text' => $request->text
