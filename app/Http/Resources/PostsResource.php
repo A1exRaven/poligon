@@ -17,7 +17,7 @@ class PostsResource extends JsonResource
         return [
             'title' => $this->title,
             'text' => $this->text,
-            PostHistoryResource::collection($this->postHistory)
+            'previous_virsion' => PostHistoryResource::collection($this->postHistory)
         ];
     }
 }

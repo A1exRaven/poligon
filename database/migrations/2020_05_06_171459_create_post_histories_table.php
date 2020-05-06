@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostHistoryTable extends Migration
+class CreatePostHistoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreatePostHistoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('post_history', function (Blueprint $table) {
+        Schema::create('post_histories', function (Blueprint $table) {
             $table->bigIncrements('id');
+
+            $table->text('text');
 
             $table->bigInteger('post_id')->unsigned()->index();
 
@@ -31,6 +33,6 @@ class CreatePostHistoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_history');
+        Schema::dropIfExists('post_histories');
     }
 }

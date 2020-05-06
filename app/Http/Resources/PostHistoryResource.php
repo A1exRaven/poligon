@@ -15,7 +15,8 @@ class PostHistoryResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'text' => $this->text
+            'text' => $this->text,
+            'created_at' => $this->created_at,
         ];
     }
 }
