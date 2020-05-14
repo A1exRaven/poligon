@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PostHistoryResource;
 use App\Http\Resources\PostsResource;
 use App\Models\Post;
 use App\Models\PostHistory;
@@ -34,6 +35,7 @@ class PostController extends Controller
     public function update(Request $request, Post $post): JsonResource
     {
         PostHistory::create([
+            'title' => $request->title,
             'text' => $request->text,
             'post_id' => $post->id
         ]);
