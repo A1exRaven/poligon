@@ -1,7 +1,7 @@
-<template>
+<template id="posts">
     <div class="row">
         <div class="pull-right">
-            <router-link class="btn btn-xs btn-primary">
+            <router-link class="btn btn-xs btn-primary" v-bind:to="{name: 'CreatePost'}">
                 <span class="glyphicon glyphicon-plus"></span>
                 Create New Post
             </router-link>
@@ -16,31 +16,24 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="post in posts" v-bind:key="post.id">
+            <tr v-for="(post, index) in filteredPosts">
                 <td>{{ index + 1 }}</td>
                 <td>{{ post.title }}</td>
                 <td>{{ post.text }}</td>
-                <td><router-link class="btn btn-info btn-xs" v-bind:to="{name: 'viewPost', params: {id: post.id}}">Show</router-link>
-                <td><router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'updatePost', params: {id: post.id}}">Update</router-link>
+                <td><router-link class="btn btn-info btn-xs" v-bind:to="{name: 'ViewPost', params: {id: post.id}}">Show</router-link>
+                <td><router-link class="btn btn-warning btn-xs" v-bind:to="{name: 'UpdatePost', params: {id: post.id}}">Update</router-link>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
 </template>
-
+create-post
 <script>
     export default {
         data() {
             return {
-                posts: [],
-                post: {
-                    id: '',
-                    title: '',
-                    text: '',
-                },
-                post_id: '',
-                update: false,
+                posts: '',
             };
         },
 

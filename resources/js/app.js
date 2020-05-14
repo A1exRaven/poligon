@@ -5,10 +5,11 @@ import VueRouter from 'vue-router'
 import VueAxios from "vue-axios";
 import axios from 'axios'
 let AppLayout = require('./components/App')
-const Posts = Vue.component('posts',require('./components/Posts'))
-const CreatePost = Vue.component('createPost',require('./components/CreatePost'))
-const UpdatePost = Vue.component('updatePost',require('./components/UpdatePost'))
-const ViewPost = Vue.component('viewPost',require('./components/ViewPost'))
+const Posts = Vue.component('Posts', require('./components/Posts.vue').default)
+const CreatePost = Vue.component('CreatePost', require('./components/CreatePost.vue').default)
+const UpdatePost = Vue.component('UpdatePost', require('./components/UpdatePost.vue').default)
+const ViewPost = Vue.component('ViewPost', require('./components/ViewPost.vue').default)
+
 
 Vue.use(VueRouter, VueAxios, axios);
 
